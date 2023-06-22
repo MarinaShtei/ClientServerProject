@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Data</title>
+</head>
+<body>
+    <h1><strong><%= itemFromsearch %></strong></h1>
+    <h1>Last Price: <%= dataFromResponse1.price %></h1>
+    <h1>Name: <%= dataFromResponse2.name %></h1>
+	<h1>Currency: <%= dataFromResponse2.currency %></h1>
+	<h1>Date: <%= dataFromResponse2.datetime %></h1>
+	<h1>Open: <%= dataFromResponse2.open %></h1>
+	<h1>Close: <%= dataFromResponse2.close %></h1>
+	<h1>High: <%= dataFromResponse2.high %></h1>
+	<h1>Low: <%= dataFromResponse2.low %></h1>
+	<h1>Previous Close: <%= dataFromResponse2.previous_close %></h1>
+	<h1>Percent Change: <%= dataFromResponse2.percent_change %></h1>
+  <div class="message">
+    Stock Changes <a href="/graph">Time series</a>
+</div>
+</body>
+</html>
