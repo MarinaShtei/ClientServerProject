@@ -261,13 +261,29 @@ app.post('/stocks', (req, res) => {
                 } else if (response.statusCode !== 200) {
                     console.log('Status:', response.statusCode);
                 } else {
-                    // data2 is successfully parsed as a JSON object
-                    // Render the output.ejs template and pass the necessary data
-                    res.render('presentStock', {
-                        itemFromsearch: itemFromsearch,
-                        dataFromResponse1: data1,
-                        dataFromResponse2: data2
+                    request.get({
+                        url: url4,
+                        json: true,
+                        headers: { 'User-Agent': 'request' }
+                    }, (err, response4, dataFromResponse4) => {
+                        if (err) {
+                            console.log('Error:', err);
+                            res.render('error', { message: 'Error fetching data.' });
+                        } else if (response4.statusCode !== 200) {
+                            console.log('Status:', response4.statusCode);
+                            res.render('error', { message: 'Error fetching data.' });
+                        } else {
+                            // dataFromResponse1 and dataFromResponse2 and dataFromResponse4 are successfully fetched
+                            // Pass the data to the template for rendering
+                            res.render('presentStock', {
+                                itemFromsearch: itemFromsearch,
+                                dataFromResponse1: data1,
+                                dataFromResponse2: data2,
+                                dataFromResponse4: dataFromResponse4
+                            });
+                        }
                     });
+                    
                 }
             });
         }
